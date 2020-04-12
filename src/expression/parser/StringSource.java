@@ -25,4 +25,10 @@ public class StringSource implements ExpressionSource {
     public char next() {
         return data.charAt(pos++);
     }
+
+    @Override
+    public char rollback(int i) {
+        this.pos -= i;
+        return this.data.charAt(pos - 1);
+    }
 }

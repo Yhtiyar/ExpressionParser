@@ -26,9 +26,15 @@ public  class BaseParser {
     }
     protected boolean test(String testValue) {
         for (int i = 0; i < testValue.length(); i ++){
-            if (!test(testValue.charAt(i))){
-                return false;
+                if (ch != testValue.charAt(i)) {
+                    ch = this.source.rollback(i);
+                    return false;
+                }
+                nextChar();
             }
+        if (ch != ' ' && ch != '(' && ch != '-'){
+            ch = source.rollback(testValue.length() - 1);
+            return false;
         }
         return true;
     }

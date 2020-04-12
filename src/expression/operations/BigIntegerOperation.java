@@ -77,4 +77,8 @@ public class BigIntegerOperation implements Operation<BigInteger> {
             throw new InvalidFunctionArgument("Negative argument for pow2");
         return x.shiftLeft(x.intValue());
     }
+    @Override
+    public BigInteger count(BigInteger x) throws EvaluateException {
+        return BigInteger.valueOf(x.bitCount());
+    }
 }

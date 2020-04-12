@@ -7,7 +7,7 @@ import expression.operations.Operation;
  * @author Yhtyyar created on 10.02.2020
  */
 public class CheckedDivide<T> extends BinaryOperation<T> {
-    public CheckedDivide(CommonExpression<T> left, CommonExpression<T> right, Operation<T> op) {
+    public CheckedDivide(CommonExpression left, CommonExpression right, Operation<T> op) {
         super(left, right, op);
     }
 
@@ -19,7 +19,7 @@ public class CheckedDivide<T> extends BinaryOperation<T> {
     }
 
     @Override
-    public char getOperationSign() {
-        return '/';
+    public String getOperationSign() {
+        return "/";
     }
 }

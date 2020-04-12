@@ -16,4 +16,5 @@ public interface Operation<T> {
         T parseConst(String x) throws EvaluateException;
         T log2(T x) throws EvaluateException;
         T pow2(T x) throws EvaluateException;
+        T count(T x) throws EvaluateException;
 }

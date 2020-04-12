@@ -19,7 +19,7 @@ public class CheckedSubtract<T> extends BinaryOperation<T> {
     }
 
     @Override
-    public char getOperationSign() {
-        return '-';
+    public String getOperationSign() {
+        return "-";
     }
 }

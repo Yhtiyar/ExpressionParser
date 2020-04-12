@@ -11,6 +11,7 @@ public class CheckedNegate<T> implements CommonExpression<T> {
     Operation<T> op;
     public CheckedNegate(CommonExpression<T> expression, Operation<T> op) {
         this.expression = expression;
+        this.op = op;
     }
 
     @Override

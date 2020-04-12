@@ -101,4 +101,9 @@ public class IntegerOperation implements Operation<Integer>{
         }
         return 1<<x;
     }
+
+    @Override
+    public Integer count(Integer x) throws EvaluateException {
+        return Integer.valueOf(Integer.bitCount(x));
+    }
 }

@@ -7,4 +7,5 @@ public interface ExpressionSource {
     boolean hasNext();
     char next();
     int getPosition();
+    char rollback(int i);
 }

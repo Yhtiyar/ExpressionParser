@@ -16,6 +16,13 @@ public class Pow2<T> implements CommonExpression<T> {
     }
 
     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("pow2(").append(expression.toString()).append(")");
+        return sb.toString();
+    }
+
+    @Override
     public T evaluate(T x, T y, T z) throws EvaluateException {
         T number = expression.evaluate(x, y, z);
         return op.pow2(number);

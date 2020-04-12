@@ -7,4 +7,7 @@ public class MissingOperatorException extends InvalidSyntaxException {
     public MissingOperatorException(String str) {
         super(str);
     }
+    public MissingOperatorException(int pos) {
+        super("Expected operator :" + pos);
+    }
 }

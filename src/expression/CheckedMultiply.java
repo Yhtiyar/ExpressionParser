@@ -8,7 +8,7 @@ import expression.operations.Operation;
  */
 public class CheckedMultiply<T> extends BinaryOperation<T> {
 
-    public CheckedMultiply(CommonExpression<T> left, CommonExpression<T> right, Operation<T> op) {
+    public CheckedMultiply(CommonExpression left, CommonExpression right, Operation<T> op) {
         super(left, right, op);
     }
 
@@ -20,7 +20,7 @@ public class CheckedMultiply<T> extends BinaryOperation<T> {
     }
 
     @Override
-    public char getOperationSign() {
-        return '*';
+    public String getOperationSign() {
+        return "*";
     }
 }

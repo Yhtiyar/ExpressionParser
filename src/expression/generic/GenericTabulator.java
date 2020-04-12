@@ -20,10 +20,12 @@ public class GenericTabulator implements Tabulator {
             Map.entry("d", new DoubleOperation()),
             Map.entry("bi", new BigIntegerOperation())
     );
+
     @Override
     public Object[][][] tabulate(String mode, String expression, int x1, int x2, int y1, int y2, int z1, int z2) throws Exception {
         return fill(OPERATION_MODE.get(mode), expression, x1, x2, y1, y2, z1, z2);
     }
+
     private <T> Object[][][] fill(Operation<T> op, String expression, int x1, int x2, int y1, int y2, int z1, int z2) {
         Parser<T> parser = new ExpressionParser<>(op);
         CommonExpression<T> parsed;

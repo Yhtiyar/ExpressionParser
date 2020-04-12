@@ -15,7 +15,7 @@ public abstract class BinaryOperation<T> implements CommonExpression<T> {
         this.op = op;
     }
 
-    public abstract char getOperationSign();
+    public abstract String getOperationSign();
 
     @Override
     public String toString() {
@@ -43,6 +43,6 @@ public abstract class BinaryOperation<T> implements CommonExpression<T> {
 
     @Override
     public int hashCode() {
-        return left.hashCode() * 31 + (int)getOperationSign() * 37 + right.hashCode() * 41;
+        return left.hashCode() * 31 + getOperationSign().hashCode() * 37 + right.hashCode() * 41;
     }
 }

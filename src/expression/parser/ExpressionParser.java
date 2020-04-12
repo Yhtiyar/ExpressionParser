@@ -27,8 +27,10 @@ public class ExpressionParser<T> implements Parser<T> {
             ADD, SUBTRACT, MULTIPLY,
             DIVIDE, CONST, VARIABLE,
             OPEN_BRACKET, CLOSE_BRACKET,
-            START, LOG2, POW2, END
+            START, LOG2, POW2, END,
+            MIN, MAX, COUNT
         }
+        String[] functionNames = {"pow2", "log2", "min", "max", "count"};
         private Token currentToken;
         private T currentConst;
         private int currentBalance;
@@ -43,14 +45,28 @@ public class ExpressionParser<T> implements Parser<T> {
         public CommonExpression<T> parseExpression() throws ParserException {
             currentBalance = 0;
             currentToken = Token.START;
-            final CommonExpression<T> result = parseFirstLevel();
+            final CommonExpression<T> result = parseZeroLevel();
             return  result;
         }
-
+        private CommonExpression<T> parseZeroLevel() throws ParserException {
+            CommonExpression<T> left = parseFirstLevel();
+            while (true) {
+                switch (currentToken) {
+                    case MIN:
+                        left = new MIN<T>(left, parseFirstLevel(), op);
+                        break;
+                    case MAX:
+                        left = new MAX<T>(left, parseFirstLevel(), op);
+                        break;
+                    default:
+                        return left;
+                }
+            }
+        }
         private CommonExpression<T> parseFirstLevel() throws ParserException {
             CommonExpression<T> left = parseSecondLevel();
             while (true) {
-                switch (currentToken){
+                switch (currentToken) {
                     case ADD:
                         left = new CheckedAdd<T>(left, parseSecondLevel(), op);
                         break;
@@ -102,6 +118,9 @@ public class ExpressionParser<T> implements Parser<T> {
                         break;
                     case POW2:
                         curr = new Pow2<T>(parseUnary(), op);
+                        break;
+                    case COUNT:
+                        curr = new Count<T>(parseUnary(), op);
                         break;
                 }
             return curr;
@@ -192,11 +211,9 @@ public class ExpressionParser<T> implements Parser<T> {
                     this.currentToken = Token.CLOSE_BRACKET;
                     break;
                 default:
-                    if (between('x','z')) {
+                    if (isVariable()) {
                         if (lastTokenIsOperand()) {
-                            throw new MissingOperatorException(
-                                    "Didn't expected variable" + ch + " at:" + getPosition()
-                            );
+                            throw new MissingOperatorException(getPosition());
                         }
 
                         currentVariable = Character.toString(ch);
@@ -204,42 +221,45 @@ public class ExpressionParser<T> implements Parser<T> {
                     }
                     else if (between('0', '9')) {
                         if (lastTokenIsOperand()) {
-                            throw new MissingOperatorException(
-                                    "Didn't expected number at:" + getPosition()
-                            );
+                            throw new MissingOperatorException(getPosition());
                         }
                         parseNumber(false);
                         currentToken = Token.CONST;
                     }
-                    else if (ch == 'l') {
-                        if (test("log2")) {
-                            if (ch != ' ' && ch != '(' && ch != '-') {
-                                throw  new InvalidSyntaxException(
-                                        "Expected space ' ' or '(' after pow2, found:" + ch +
-                                                "at " + getPosition()
-                                );
-                            }
-                            currentToken = Token.LOG2;
-                            return;
+                    else if (test("log2")) {
+                        if (lastTokenIsOperand()) {
+                            throw new MissingOperatorException(getPosition());
                         }
-                        throw new InvalidSyntaxException(
-                                "Expected log2 after l at pos" + getPosition()
-                        );
+                        currentToken = Token.LOG2;
+                        return;
                     }
-                    else if (ch == 'p') {
-                        if (test("pow2")) {
-                            if (ch != ' ' && ch != '(' && ch != '-') {
-                                throw  new InvalidSyntaxException(
-                                        "Expected space ' ' or '(' after pow2, found:" + ch +
-                                        "at " + getPosition()
-                                );
-                            }
-                            currentToken = Token.POW2;
-                            return;
+                    else if (test("pow2")) {
+                        if (lastTokenIsOperand()) {
+                            throw new MissingOperatorException(getPosition());
                         }
-                        throw new InvalidSyntaxException(
-                                "Expected pow2 after p at " + getPosition()
-                        );
+                        currentToken = Token.POW2;
+                        return;
+                    }
+                    else if (test("min")) {
+                        if (!lastTokenIsOperand()) {
+                            throw new InvalidOperatorUseException("min", getPosition());
+                        }
+                        currentToken = Token.MIN;
+                        return;
+                    }
+                    else if (test("max")) {
+                        if (!lastTokenIsOperand()) {
+                            throw new InvalidOperatorUseException("max", getPosition());
+                        }
+                        currentToken = Token.MAX;
+                        return;
+                    }
+                    else if (test("count")) {
+                        if (lastTokenIsOperand()) {
+                            throw new MissingOperatorException(getPosition());
+                        }
+                        currentToken = Token.COUNT;
+                        return;
                     }
                     else {
                         throw  new InvalidSyntaxException(

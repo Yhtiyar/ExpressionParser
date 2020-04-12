@@ -59,4 +59,9 @@ public class DoubleOperation implements Operation<Double> {
     public Double pow2(Double x) throws EvaluateException {
         return Math.pow(2, x);
     }
+
+    @Override
+    public Double count(Double x) throws EvaluateException {
+        return Double.valueOf(Long.bitCount(Double.doubleToLongBits(x)));
+    }
 }
