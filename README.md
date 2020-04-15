@@ -6,8 +6,7 @@ It was my homework from programming paradigms course, Itmo CT (30 hours waste), 
 ## Usage
 
 ~~~
-                ExpressionParser ep = new ExpressionParser();
-
+                
                 ExpressionParser ep = new ExpressionParser<>(new DoubleOperation());
                 try {
                     System.out.println(ep.parse("x*y + log2 (5*x) + z - 2*x").evaluate(5d, 1.5d, 2.9d));
