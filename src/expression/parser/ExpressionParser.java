@@ -79,7 +79,7 @@ public class ExpressionParser<T> implements Parser<T> {
             }
         }
 
-        private CommonExpression parseSecondLevel() throws ParserException {
+        private CommonExpression<T> parseSecondLevel() throws ParserException {
             CommonExpression<T> left = parseUnary();
             while (true) {
                 switch (currentToken){
@@ -94,7 +94,7 @@ public class ExpressionParser<T> implements Parser<T> {
                 }
             }
         }
-        private CommonExpression parseUnary() throws ParserException {
+        private CommonExpression<T> parseUnary() throws ParserException {
             CommonExpression<T> curr = null;
             next();
                 switch (currentToken){

@@ -7,7 +7,7 @@ import expression.operations.Operation;
  * @author Yhtyyar created on 11.04.2020
  */
 public class MIN<T> extends BinaryOperation<T>  {
-    public MIN(CommonExpression l, CommonExpression r, Operation op) {
+    public MIN(CommonExpression<T> l, CommonExpression<T> r, Operation<T> op) {
         super(l, r, op);
     }
 

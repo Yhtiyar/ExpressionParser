@@ -7,7 +7,7 @@ import expression.operations.Operation;
  * @author Yhtyyar created on 10.02.2020
  */
 public class CheckedAdd<T> extends BinaryOperation<T> {
-    public CheckedAdd(CommonExpression left, CommonExpression right, Operation<T> op) {
+    public CheckedAdd(CommonExpression<T> left, CommonExpression<T> right, Operation<T> op) {
         super(left, right, op);
     }
 
