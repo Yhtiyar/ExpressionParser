@@ -1,7 +1,7 @@
 # ExpressionParser
 Java math expression parser
 
-It was my homework from programming paradigms course, ITMO CT (35 hours waste), 2k code lines.
+It was my homework from programming paradigms course, ITMO CT (35 hours waste), 2k lines of code
 
 ## Usage
 
