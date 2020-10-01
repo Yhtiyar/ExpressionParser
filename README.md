@@ -1,5 +1,5 @@
 # ExpressionParser
-@ symbol: Hey
+
 Java math expression parser
 
 It was my homework from programming paradigms course, ITMO CT 
