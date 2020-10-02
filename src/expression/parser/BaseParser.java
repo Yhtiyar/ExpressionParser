@@ -2,7 +2,7 @@ package expression.parser;
 
 /**
  * @author Yhtyyar created on 10.02.2020
- */
+ **/
 public  class BaseParser {
     private final ExpressionSource source;
     protected char ch;
@@ -32,7 +32,7 @@ public  class BaseParser {
                 }
                 nextChar();
             }
-        if (ch != ' ' && ch != '(' && ch != '-'){
+        if (ch != ' ' && ch != '(' && ch != '-') {
             ch = source.rollback(testValue.length() - 1);
             return false;
         }
