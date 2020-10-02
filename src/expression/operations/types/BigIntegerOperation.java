@@ -1,8 +1,9 @@
-package expression.operations;
+package expression.operations.types;
 
 import expression.exceptions.DivisionByZeroException;
 import expression.exceptions.EvaluateException;
 import expression.exceptions.InvalidFunctionArgument;
+import expression.operations.Operation;
 
 import java.math.BigInteger;
 

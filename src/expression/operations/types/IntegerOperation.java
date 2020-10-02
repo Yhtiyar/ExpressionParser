@@ -1,14 +1,15 @@
-package expression.operations;
+package expression.operations.types;
 
 import expression.exceptions.DivisionByZeroException;
 import expression.exceptions.EvaluateException;
 import expression.exceptions.InvalidFunctionArgument;
 import expression.exceptions.OverflowException;
+import expression.operations.Operation;
 
 /**
  * @author Yhtyyar created on 23.03.2020
  */
-public class IntegerOperation implements Operation<Integer>{
+public class IntegerOperation implements Operation<Integer> {
     @Override
     public Integer add(Integer l, Integer r) throws EvaluateException {
         if (l >= 0 && (Integer.MAX_VALUE - l >= r) ||

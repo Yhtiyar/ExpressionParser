@@ -1,12 +1,9 @@
-import expression.CheckedAdd;
-import expression.Const;
+import expression.operations.CheckedAdd;
+import expression.operations.Const;
 import expression.exceptions.ParserException;
-import expression.operations.DoubleOperation;
-import expression.operations.IntegerOperation;
+import expression.operations.types.DoubleOperation;
+import expression.operations.types.IntegerOperation;
 import expression.parser.ExpressionParser;
-import expression.operations.BigIntegerOperation;
-
-import java.math.BigInteger;
 
 public class Main {
 

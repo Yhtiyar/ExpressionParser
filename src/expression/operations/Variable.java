@@ -1,4 +1,4 @@
-package expression;
+package expression.operations;
 
 /**
  * @author Yhtyyar created on 10.02.2020
