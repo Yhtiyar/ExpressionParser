@@ -1,8 +1,7 @@
 package expression.parser;
 
-import expression.*;
 import expression.exceptions.*;
-import expression.operations.Operation;
+import expression.operations.*;
 
 /**
  * @author Yhtyyar created on 10.02.2020

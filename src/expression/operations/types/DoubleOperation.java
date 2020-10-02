@@ -1,6 +1,7 @@
-package expression.operations;
+package expression.operations.types;
 
 import expression.exceptions.EvaluateException;
+import expression.operations.Operation;
 
 /**
  * @author Yhtyyar created on 10.04.2020

@@ -1,6 +1,4 @@
-package expression;
-
-import expression.operations.Operation;
+package expression.operations;
 
 /**
  * @author Yhtyyar created on 10.02.2020
