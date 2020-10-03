@@ -4,7 +4,7 @@ Java math expression parser
 
 It was my homework from programming paradigms course, ITMO CT 
 
-Amount of time spent: 35 hours waste
+Amount of time spent: 35-40 hours
 
 ## Usage
 
