@@ -1,12 +1,11 @@
 package expression.operations.types;
 
 import expression.exceptions.EvaluateException;
-import expression.operations.Operation;
 
 /**
  * @author Yhtyyar created on 10.04.2020
  */
-public class DoubleOperation implements Operation<Double> {
+public class DoubleOperation extends AbstractOperation<Double> {
     @Override
     public Double add(Double l, Double r) throws EvaluateException {
         return l + r;
@@ -64,5 +63,10 @@ public class DoubleOperation implements Operation<Double> {
     @Override
     public Double count(Double x) throws EvaluateException {
         return Double.valueOf(Long.bitCount(Double.doubleToLongBits(x)));
+    }
+
+    @Override
+    public Double pow(Double l, Double r) throws EvaluateException {
+        return Math.pow(l, r);
     }
 }

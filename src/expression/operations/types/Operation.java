@@ -1,4 +1,4 @@
-package expression.operations;
+package expression.operations.types;
 
 import expression.exceptions.EvaluateException;
 
@@ -17,4 +17,6 @@ public interface Operation<T> {
         T log2(T x) throws EvaluateException;
         T pow2(T x) throws EvaluateException;
         T count(T x) throws EvaluateException;
+        T log(T x, T a) throws EvaluateException;
+        T pow(T l, T r) throws EvaluateException;
 }

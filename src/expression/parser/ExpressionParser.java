@@ -2,6 +2,7 @@ package expression.parser;
 
 import expression.exceptions.*;
 import expression.operations.*;
+import expression.operations.types.Operation;
 
 /**
  * @author Yhtyyar created on 10.02.2020
@@ -27,7 +28,7 @@ public class ExpressionParser<T> implements Parser<T> {
             DIVIDE, CONST, VARIABLE,
             OPEN_BRACKET, CLOSE_BRACKET,
             START, LOG2, POW2, END,
-            MIN, MAX, COUNT
+            MIN, MAX, COUNT, POW
         }
         String[] functionNames = {"pow2", "log2", "min", "max", "count"};
         private Token currentToken;
@@ -87,6 +88,9 @@ public class ExpressionParser<T> implements Parser<T> {
                         break;
                     case DIVIDE:
                         left = new CheckedDivide<T>(left, parseUnary(), op);
+                        break;
+                    case POW:
+                        left = new Pow<T>(left, parseUnary(), op);
                         break;
                     default:
                         return left;
@@ -180,6 +184,12 @@ public class ExpressionParser<T> implements Parser<T> {
                         throw new InvalidOperatorUseException("/", getPosition());
                     }
                     currentToken = Token.DIVIDE;
+                    break;
+                case '^':
+                    if (!lastTokenIsOperand()) {
+                        throw new InvalidOperatorUseException("^", getPosition());
+                    }
+                    currentToken = Token.POW;
                     break;
                 case '(':
                     if (lastTokenIsOperand()) {

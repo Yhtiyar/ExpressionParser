@@ -4,12 +4,11 @@ import expression.exceptions.DivisionByZeroException;
 import expression.exceptions.EvaluateException;
 import expression.exceptions.InvalidFunctionArgument;
 import expression.exceptions.OverflowException;
-import expression.operations.Operation;
 
 /**
  * @author Yhtyyar created on 23.03.2020
  */
-public class IntegerOperation implements Operation<Integer> {
+public class IntegerOperation extends AbstractOperation<Integer> {
     @Override
     public Integer add(Integer l, Integer r) throws EvaluateException {
         if (l >= 0 && (Integer.MAX_VALUE - l >= r) ||
@@ -106,5 +105,10 @@ public class IntegerOperation implements Operation<Integer> {
     @Override
     public Integer count(Integer x) throws EvaluateException {
         return Integer.valueOf(Integer.bitCount(x));
+    }
+
+    @Override
+    public Integer pow(Integer l, Integer r) throws EvaluateException {
+        return Integer.valueOf((int) Math.pow(l, r));
     }
 }

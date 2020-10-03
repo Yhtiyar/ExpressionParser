@@ -3,14 +3,13 @@ package expression.operations.types;
 import expression.exceptions.DivisionByZeroException;
 import expression.exceptions.EvaluateException;
 import expression.exceptions.InvalidFunctionArgument;
-import expression.operations.Operation;
 
 import java.math.BigInteger;
 
 /**
  * @author Yhtyyar created on 10.04.2020
  */
-public class BigIntegerOperation implements Operation<BigInteger> {
+public class BigIntegerOperation extends AbstractOperation<BigInteger> {
     @Override
     public BigInteger add(BigInteger l, BigInteger r) throws EvaluateException {
         return l.add(r);
@@ -81,5 +80,10 @@ public class BigIntegerOperation implements Operation<BigInteger> {
     @Override
     public BigInteger count(BigInteger x) throws EvaluateException {
         return BigInteger.valueOf(x.bitCount());
+    }
+
+    @Override
+    public BigInteger pow(BigInteger l, BigInteger r) throws EvaluateException {
+        return l.pow(r.intValue());
     }
 }
