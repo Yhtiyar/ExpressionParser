@@ -6,11 +6,17 @@ It was my homework from programming paradigms course, ITMO CT
 
 Amount of time spent: 35-40 hours
 
+Readme is outdated(it is still relevant, but I've made some updates that simlifies usage), will be updated soon.
+
 ## Usage
 
 ```Java
                 
-ExpressionParser ep = new ExpressionParser<>(new DoubleOperation());
+ExpressionParser ep = new DoubleExpressionParser(); //All evaluation will be for Double type
+
+/*For parsing and evaluating as BigInteger type*/
+ExpressionParser bigIntegerParser = new BigIntegerExpressionParser();
+
 try {
     System.out.println(ep.parse("x*y + log2 (5*x) + z - 2*x").evaluate(5d, 1.5d, 2.9d));
     System.out.println(ep.parse(pow2(x) min (1 + z^10 / y));
