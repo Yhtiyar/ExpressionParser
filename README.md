@@ -48,6 +48,7 @@ catch (ParserException e){
 7. `count` count of active bits in binary form of number `count 8 = 1; count(4 + 3) = 3`
 8. `min` **usage** `1 min 2` -> `1`, **NOTE:** it has lowest priority while evaluating, so `1+2*3 min 3*1+1` -> `4`
 9. `max` usage same as min
+10 `^` power, **usage** `2^10` -> `1024`
 
 Each operation has its own class. 
 
