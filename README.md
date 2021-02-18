@@ -2,10 +2,6 @@
 
 Java math expression parser
 
-It was my homework from programming paradigms course, ITMO CT 
-
-Amount of time spent: 35-40 hours
-
 Readme is outdated(it is still relevant, but I've made some updates that simlifies usage), will be updated soon.
 
 ## Usage
